@@ -1,0 +1,35 @@
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ReaderFile {
+
+	public static void main(String[] args) {
+		
+				
+		String str = " Костя 25.10.1986 "; 
+		// второй вариант: поменяй местами дату и имя.
+		//сколько хочешь пробелов перед, после и между.
+		//хоть слитно Костя25.10.1986.
+		Scanner sc = new Scanner(str);
+	
+		Pattern pdate = Pattern.compile("\\d\\d.\\d\\d.\\d\\d\\d\\d");
+		Matcher date = pdate.matcher(str);
+			if(date.find()){
+			String str1 = date.group();
+			System.out.println("str1= " + str1);
+		}
+			
+		Pattern pname = Pattern.compile("([а-яА-Я].+[а-яА-Я])");
+		Matcher name = pname.matcher(str);
+		if(name.find()){
+			String str2= name.group();
+			System.out.println("str2= " + str2);
+					
+		}
+		sc.close();
+		
+			
+		
+	}
+}
